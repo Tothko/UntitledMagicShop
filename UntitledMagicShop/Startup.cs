@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -17,6 +18,7 @@ using UntitledMagicShop.Core.Application_Services_Impl;
 using UntitledMagicShop.Core.Domain_Services;
 using UntitledMagicShop.Core.Entities;
 using UntitledMagicShop.Infrastructure.SQLData;
+using UntitledMagicShop.Infrastructure.SQLData.Repos;
 
 namespace UntitledMagicShop
 {
@@ -39,7 +41,7 @@ namespace UntitledMagicShop
                 services.AddDbContext<UntitledMagicShopAppContext>(
                       opt =>
                       {
-                          opt.UseSqlite("Data Source=PetShopSQLite.db");
+                           opt.UseSqlite("Data Source=PetShopSQLite.db");
                       });
             }
             else
@@ -88,8 +90,8 @@ namespace UntitledMagicShop
                 {
 
                     var ctx = scope.ServiceProvider.GetService<UntitledMagicShopAppContext>();
-                    ctx.Database.EnsureCreated();
-                    //DBInitializer.SeedDB(ctx);
+                    //ctx.Database.EnsureCreated();
+                    DBInitializer.SeedDB(ctx);
                 }
                 app.UseHsts();
             }
