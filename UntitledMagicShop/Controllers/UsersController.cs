@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using UntitledMagicShop.Core.Entities;
 
 namespace UntitledMagicShop.Controllers
 {
@@ -15,7 +16,8 @@ namespace UntitledMagicShop.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<User>> Get()
         {
-            return new string[] { "value1", "value2" };
+            return null;
+            //return new string[] { "value1", "value2" };
         }
 
         // GET api/values/5
