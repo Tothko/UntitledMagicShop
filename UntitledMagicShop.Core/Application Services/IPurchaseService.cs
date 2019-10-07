@@ -5,8 +5,8 @@ using UntitledMagicShop.Core.Entities;
 
 namespace UntitledMagicShop.Core.Application_Services
 {
-    public interface IUserService
+    public interface IPurchaseService
     {
-        User authenticateUser(string name, string password);
+        Purchase createPurchase(Purchase newPurchase);
     }
 }
