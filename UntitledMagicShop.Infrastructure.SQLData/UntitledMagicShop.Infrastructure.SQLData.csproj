@@ -4,4 +4,9 @@
     <TargetFramework>netcoreapp2.2</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\UntitledMagicShop.Core.Entities\UntitledMagicShop.Core.Entities.csproj" />
+    <ProjectReference Include="..\UntitledMagicShop.Core\UntitledMagicShop.Core.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -8,3 +8,4 @@ namespace UntitledMagicShop.Infrastructure.SQLData
     {
     }
 }
+<
