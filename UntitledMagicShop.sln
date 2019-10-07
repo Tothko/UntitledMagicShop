@@ -3,7 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29209.62
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UntitledMagicShop", "UntitledMagicShop\UntitledMagicShop.csproj", "{CADF8738-3A8F-424C-B46A-DA02865DABB9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UntitledMagicShop", "UntitledMagicShop\UntitledMagicShop.csproj", "{CADF8738-3A8F-424C-B46A-DA02865DABB9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{38E8CCD3-F25E-400A-87BF-B394C98E676E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{7FA0C584-6D15-4A3C-9E9C-F6B87B515ED6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "REST", "REST", "{A668E923-417E-4F5B-BD6A-9B550C1D7A34}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UntitledMagicShop.Core", "UntitledMagicShop.Core\UntitledMagicShop.Core.csproj", "{F30A46BA-6710-440A-8BFA-6576351C44F3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UntitledMagicShop.Core.Entities", "UntitledMagicShop.Core.Entities\UntitledMagicShop.Core.Entities.csproj", "{F247BC29-5CF7-4DF3-9E28-552959D745E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UntitledMagicShop.Infrastructure.SQLData", "UntitledMagicShop.Infrastructure.SQLData\UntitledMagicShop.Infrastructure.SQLData.csproj", "{1973C37F-DC27-4BD6-86D9-D373685AA07D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,9 +27,27 @@ Global
 		{CADF8738-3A8F-424C-B46A-DA02865DABB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CADF8738-3A8F-424C-B46A-DA02865DABB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CADF8738-3A8F-424C-B46A-DA02865DABB9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F30A46BA-6710-440A-8BFA-6576351C44F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F30A46BA-6710-440A-8BFA-6576351C44F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F30A46BA-6710-440A-8BFA-6576351C44F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F30A46BA-6710-440A-8BFA-6576351C44F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F247BC29-5CF7-4DF3-9E28-552959D745E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F247BC29-5CF7-4DF3-9E28-552959D745E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F247BC29-5CF7-4DF3-9E28-552959D745E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F247BC29-5CF7-4DF3-9E28-552959D745E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1973C37F-DC27-4BD6-86D9-D373685AA07D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1973C37F-DC27-4BD6-86D9-D373685AA07D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1973C37F-DC27-4BD6-86D9-D373685AA07D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1973C37F-DC27-4BD6-86D9-D373685AA07D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CADF8738-3A8F-424C-B46A-DA02865DABB9} = {A668E923-417E-4F5B-BD6A-9B550C1D7A34}
+		{F30A46BA-6710-440A-8BFA-6576351C44F3} = {38E8CCD3-F25E-400A-87BF-B394C98E676E}
+		{F247BC29-5CF7-4DF3-9E28-552959D745E9} = {38E8CCD3-F25E-400A-87BF-B394C98E676E}
+		{1973C37F-DC27-4BD6-86D9-D373685AA07D} = {7FA0C584-6D15-4A3C-9E9C-F6B87B515ED6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0D4B0ABD-E007-4B90-B3F5-F59A235E2E84}
