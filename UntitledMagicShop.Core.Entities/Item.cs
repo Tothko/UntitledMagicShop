@@ -4,7 +4,7 @@ using System.Text;
 
 namespace UntitledMagicShop.Core.Entities
 {
-    class Item
+    public class Item
     {
     }
 }

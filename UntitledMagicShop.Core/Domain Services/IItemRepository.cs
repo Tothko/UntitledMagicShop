@@ -4,7 +4,7 @@ using System.Text;
 
 namespace UntitledMagicShop.Core.Entities
 {
-    interface IItemRepository
+    public interface IItemRepository
     {
     }
 }
