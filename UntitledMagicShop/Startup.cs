@@ -49,6 +49,14 @@ namespace UntitledMagicShop
                 });
             }
 
+            services.AddCors(options =>
+            {
+                options.AddPolicy("MyPolicy", builder =>
+                {
+                    builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+                });
+            });
+
             services.AddScoped<IItemService, ItemService>();
             services.AddScoped<IItemRepository, ItemRepository>();
             services.AddScoped<IPurchaseService, PurchaseService>();
@@ -89,6 +97,7 @@ namespace UntitledMagicShop
                 }
             }
 
+            app.UseCors("MyPolicy");
             app.UseHttpsRedirection();
             app.UseMvc();
         }
