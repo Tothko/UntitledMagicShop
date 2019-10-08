@@ -31,9 +31,9 @@ namespace UntitledMagicShop.Controllers
         }
         // GET api/values
         [HttpGet]
-        public ActionResult<IEnumerable<Item>> Get([FromQuery] string type)
+        public ActionResult<IEnumerable<Item>> Get()
         {
-            return Ok(_itemService.listAllItems(type));
+            return Ok(_itemService.ReadAll());
         }
 
         // GET api/values/5

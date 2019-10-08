@@ -17,5 +17,7 @@ namespace UntitledMagicShop.Core.Application_Services
 
         Item deleteItem(Item itemToDelete);
 
+        IEnumerable<Item> ReadAll();
+
     }
 }

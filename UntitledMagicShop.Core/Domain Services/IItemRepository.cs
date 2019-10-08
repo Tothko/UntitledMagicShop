@@ -11,5 +11,7 @@ namespace UntitledMagicShop.Core.Entities
         List<Item> getAllItemsByType(string type);
         Item getSingleItem(int iD);
         Item updateItem(Item itemToUpdate);
+
+        IEnumerable<Item> ReadAll();
     }
 }

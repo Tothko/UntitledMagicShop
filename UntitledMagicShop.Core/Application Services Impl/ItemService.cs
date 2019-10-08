@@ -52,5 +52,10 @@ namespace UntitledMagicShop.Core.Application_Services_Impl
         {
             return _repo.updateItem(itemToUpdate);
         }
+
+        public IEnumerable<Item> ReadAll()
+        {
+            return _repo.ReadAll();
+        }
     }
 }

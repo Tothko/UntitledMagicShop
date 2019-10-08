@@ -46,6 +46,11 @@ namespace UntitledMagicShop.Infrastructure.SQLData.Repos
             return context.Items.Find(Id);
         }
 
+        public IEnumerable<Item> ReadAll()
+        {
+            return context.Items;
+        }
+
         public Item updateItem(Item itemToUpdate)
         {
             
