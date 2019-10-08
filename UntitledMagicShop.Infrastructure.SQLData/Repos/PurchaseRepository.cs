@@ -21,5 +21,31 @@ namespace UntitledMagicShop.Infrastructure.SQLData.Repos
             context.SaveChanges();
             return newPurchase;
         }
+
+
+        public Purchase deletePurchase(Purchase PurchaseToDelete)
+        {
+
+            context.Remove(context.Find<Purchase>(PurchaseToDelete));
+            context.SaveChanges();
+            return PurchaseToDelete;
+        }
+
+        public Purchase getSinglePurchase(int Id)
+        {
+            return context.Purchases.Find(Id);
+        }
+
+        public IEnumerable<Purchase> ReadAll()
+        {
+            return context.Purchases;
+        }
+
+        public Purchase updatePurchase(Purchase PurchaseToUpdate)
+        {
+
+            return PurchaseToUpdate;
+        }
+
     }
 }

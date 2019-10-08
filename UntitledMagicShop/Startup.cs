@@ -57,7 +57,7 @@ namespace UntitledMagicShop
             services.AddScoped<IPurchaseService, PurchaseService>();
             services.AddScoped<IItemService, ItemService>();
             services.AddScoped<IUserService, UserService>();
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddMvc().AddJsonOptions(options => {
                 options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
                 options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;

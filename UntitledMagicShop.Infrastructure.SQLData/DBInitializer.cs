@@ -42,7 +42,7 @@ namespace UntitledMagicShop.Infrastructure.SQLData
         private static void SeedItems(UntitledMagicShopAppContext ctx)
         {
             for (int i = 1; i <= 20; i++)
-            {
+           {
                 ctx.Items.Add(new Item
                 {
                     ID = i,
@@ -62,7 +62,7 @@ namespace UntitledMagicShop.Infrastructure.SQLData
         {
             for (int i = 1; i <= 5; i++)
             {
-
+               
             }
 
         }
