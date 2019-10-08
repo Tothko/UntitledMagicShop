@@ -27,7 +27,7 @@ namespace UntitledMagicShop.Infrastructure.SQLData
             for (int i = 1; i <= 10; i++)
             {
                 ctx.Users.Add(new User {
-                    ID = i,
+                    //ID = i,
                     FirstName = "Marek",
                     LastName = "Surkus",
                     Email = "yolodude@fmail.com",
@@ -45,7 +45,7 @@ namespace UntitledMagicShop.Infrastructure.SQLData
            {
                 ctx.Items.Add(new Item
                 {
-                    ID = i,
+                   // ID = i,
                     Name = "MemeSword",
                     Price = 666.99,
                     OnStock = 42,

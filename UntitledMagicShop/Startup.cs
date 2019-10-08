@@ -11,8 +11,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
 using UntitledMagicShop.Core.Application_Services;
 using UntitledMagicShop.Core.Application_Services_Impl;
 using UntitledMagicShop.Core.Domain_Services;
@@ -24,10 +22,10 @@ namespace UntitledMagicShop
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration, IHostingEnvironment env)
+        public Startup(IConfiguration configuration, IHostingEnvironment environment)
         {
             Configuration = configuration;
-            Environment = env;
+            Environment = environment;
         }
 
         public IConfiguration Configuration { get; }
@@ -38,62 +36,57 @@ namespace UntitledMagicShop
         {
             if (Environment.IsDevelopment())
             {
-                services.AddDbContext<UntitledMagicShopAppContext>(
-                      opt =>
-                      {
-                           opt.UseSqlite("Data Source=PetShopSQLite.db");
-                      });
+                services.AddDbContext<UntitledMagicShopAppContext>(opt =>
+                {
+                    opt.UseSqlite("Data Source=worldOfOzWebshop.db");
+                });
             }
             else
             {
-                // Azure SQL database:
                 services.AddDbContext<UntitledMagicShopAppContext>(opt =>
-                opt.UseSqlServer(Configuration.GetConnectionString("defaultConnection")));
+                {
+                    opt.UseSqlServer(Configuration.GetConnectionString("defaultConnection"));
+                });
             }
 
-            services.AddScoped<IItemRepository, ItemRepository>();
-            services.AddScoped<IUserRepository, UserRepository>();
-            services.AddScoped<IPurchaseRepository, PurchaseRepository>();
-            services.AddScoped<IPurchaseService, PurchaseService>();
             services.AddScoped<IItemService, ItemService>();
+            services.AddScoped<IItemRepository, ItemRepository>();
+            services.AddScoped<IPurchaseService, PurchaseService>();
+            services.AddScoped<IPurchaseRepository, PurchaseRepository>();
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IUserRepository, UserRepository>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-            services.AddMvc().AddJsonOptions(options => {
-                options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
-                options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
-
+            services.AddMvc().AddJsonOptions(options =>
+            {
+                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
             });
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            app.UseDeveloperExceptionPage();
-
             if (env.IsDevelopment())
             {
+                app.UseDeveloperExceptionPage();
                 using (var scope = app.ApplicationServices.CreateScope())
                 {
-
                     var ctx = scope.ServiceProvider.GetService<UntitledMagicShopAppContext>();
-                    //ctx.Database.EnsureCreated();
+                    ctx.Database.EnsureDeleted();
+                    ctx.Database.EnsureCreated();
                     DBInitializer.SeedDB(ctx);
-
                 }
-                app.UseDeveloperExceptionPage();
-
             }
             else
             {
+                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+                app.UseHsts();
                 using (var scope = app.ApplicationServices.CreateScope())
                 {
-
                     var ctx = scope.ServiceProvider.GetService<UntitledMagicShopAppContext>();
-                    //ctx.Database.EnsureCreated();
-                    DBInitializer.SeedDB(ctx);
+                    ctx.Database.EnsureCreated();
+                    
+
                 }
-                app.UseHsts();
             }
 
             app.UseHttpsRedirection();
