@@ -23,7 +23,7 @@ namespace UntitledMagicShop.Controllers
         [HttpPost]
         public ActionResult<Purchase> Post([FromBody] Purchase sale)
         {
-            if (sale.items.Count == 0)
+            if (sale.Items.Count == 0)
                 return BadRequest("Purchase has to containt atleast one item");
             try
             {

@@ -15,7 +15,7 @@ namespace UntitledMagicShop.Controllers
     {
         private readonly IUserService _userService; 
 
-        private bool IsValid(User user,out String msg)
+     /*   private bool IsValid(User user,out String msg)
         {
             msg = "";
             if (user == null)
@@ -25,14 +25,14 @@ namespace UntitledMagicShop.Controllers
             if (user.Password.Length == 0)
                 msg = "User password can not be empty";
             return msg.Length == 0;
-        }
+        }*/
 
         public UsersController(IUserService service)
         {
             _userService = service;
         }
         // GET api/values
-        [HttpGet]
+       /* [HttpGet]
         public ActionResult<IEnumerable<User>> Get()
         {
             return _userService.ReadAll();
@@ -114,6 +114,6 @@ namespace UntitledMagicShop.Controllers
             {
                 return BadRequest("Error deleting user");
             }
-        }
+        }*/
     }
 }

@@ -11,6 +11,7 @@ namespace UntitledMagicShop.Infrastructure.SQLData
         public static void SeedDB(UntitledMagicShopAppContext ctx)
         {
 
+            
             ctx.Database.EnsureCreated();
             if (ctx.Users.Any())
             {
