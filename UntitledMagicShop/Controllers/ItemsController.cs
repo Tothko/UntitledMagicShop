@@ -29,22 +29,32 @@ namespace UntitledMagicShop.Controllers
         {
             _itemService = service;
         }
-        // GET api/values
+        /* GET api/values
         [HttpGet]
         public ActionResult<IEnumerable<Item>> Get()
         {
             return Ok(_itemService.ReadAll());
-        }
+        }*/
 
-        // GET api/values/5
-        [HttpGet("{id}")]
-        public ActionResult<Item> Get(int id)
+
+
+        // GET api/values?
+        [HttpGet]
+        public ActionResult<IEnumerable<Item>> Get([FromQuery] Filter filter)
         {
-            var item = _itemService.listSingleItem(id);
-            if (item == null)
+
+            if (_itemService.listAllItems() == null)
+            {
+                BadRequest("Item list is empty");
                 return NotFound();
+            }
+
             else
-                return Ok(item);
+            {
+                if(filter.CurrentPage < 0 || filter.ItemPrPage < 0)  return BadRequest("Current page and items per apge has to be at least 0");
+                
+            }
+                return _itemService.GetFilteredItems(filter).ToList();
         }
 
         // POST api/values

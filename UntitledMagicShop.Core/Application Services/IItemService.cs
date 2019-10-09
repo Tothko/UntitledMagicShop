@@ -7,8 +7,9 @@ namespace UntitledMagicShop.Core.Application_Services
 {
     public interface IItemService
     {
-        List<Item> listAllItems(string type);
+        List<Item> listAllItems();
 
+        List<Item> listItemsByType(string Type);
         Item listSingleItem(int ID);
 
         Item createItem(Item newItem);
@@ -18,6 +19,6 @@ namespace UntitledMagicShop.Core.Application_Services
         Item deleteItem(Item itemToDelete);
 
         IEnumerable<Item> ReadAll();
-
+        IEnumerable<Item> GetFilteredItems(Filter filter);
     }
 }

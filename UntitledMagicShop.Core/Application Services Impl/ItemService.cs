@@ -38,14 +38,19 @@ namespace UntitledMagicShop.Core.Application_Services_Impl
             return _repo.deleteItem(itemToDelete);
         }
 
-        public List<Item> listAllItems(string type)
+        public List<Item> listAllItems()
         {
-            return _repo.getAllItemsByType(type);
+            return _repo.getAllItems();
         }
 
         public Item listSingleItem(int ID)
         {
             return _repo.getSingleItem(ID);
+        }
+
+        public List<Item> listItemsByType(string Type)
+        {
+            return _repo.getAllItemsByType(Type);
         }
 
         public Item updateItem(Item itemToUpdate)
@@ -56,6 +61,11 @@ namespace UntitledMagicShop.Core.Application_Services_Impl
         public IEnumerable<Item> ReadAll()
         {
             return _repo.ReadAll();
+        }
+
+        public IEnumerable<Item> GetFilteredItems(Filter filter)
+        {
+            return _repo.getFiltered(filter);
         }
     }
 }

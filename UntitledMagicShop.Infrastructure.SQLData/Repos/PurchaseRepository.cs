@@ -15,11 +15,11 @@ namespace UntitledMagicShop.Infrastructure.SQLData.Repos
         {
             context = ctx;
         }
-        public Purchase createPurchase(Purchase newPurchase)
+        public Purchase createPurchase(Purchase NewPurchase)
         {
-            context.Attach(newPurchase).State = EntityState.Added;
+            context.Attach(NewPurchase).State = EntityState.Added;
             context.SaveChanges();
-            return newPurchase;
+            return NewPurchase;
         }
 
 
@@ -43,8 +43,19 @@ namespace UntitledMagicShop.Infrastructure.SQLData.Repos
 
         public Purchase updatePurchase(Purchase PurchaseToUpdate)
         {
+            if (context.Items.Find(PurchaseToUpdate) == null)
+            {
+                return null;
+            }
+            context.Entry(PurchaseToUpdate).CurrentValues.SetValues(PurchaseToUpdate);
 
             return PurchaseToUpdate;
+        }
+
+        public User GetUserOfPurchase(Purchase Purchase)
+        {
+            User User = context.Purchases.Find(Purchase).User;
+            return User;
         }
 
     }

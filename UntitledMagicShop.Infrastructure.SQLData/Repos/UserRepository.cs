@@ -45,6 +45,11 @@ namespace UntitledMagicShop.Infrastructure.SQLData.Repos
 
         public User updateUser(User UserToUpdate)
         {
+            if (context.Items.Find(UserToUpdate) == null)
+            {
+                return null;
+            }
+            context.Entry(UserToUpdate).CurrentValues.SetValues(UserToUpdate);
 
             return UserToUpdate;
         }
@@ -52,6 +57,12 @@ namespace UntitledMagicShop.Infrastructure.SQLData.Repos
         public User loginUser(string newName, string newPass)
         {
             throw new NotImplementedException();
+        }
+
+        public List<Purchase> GetPurchasesOfUser(User User)
+        {
+            List<Purchase> UserPurchases = context.Users.Find(User).Purchases;
+            return UserPurchases;
         }
     }
 }
