@@ -38,6 +38,7 @@ namespace UntitledMagicShop.Infrastructure.SQLData.Repos
             return context.Users.Find(Id);
         }
 
+
         public IEnumerable<User> ReadAll()
         {
             return context.Users;

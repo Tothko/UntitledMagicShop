@@ -1,4 +1,6 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
 using UntitledMagicShop.Core.Application_Services;
 using UntitledMagicShop.Core.Domain_Services;
 using UntitledMagicShop.Core.Entities;
@@ -17,6 +19,31 @@ namespace UntitledMagicShop.Core.Application_Services_Impl
             var newName = parseOutSpecialCharacters(name);
             var newPass = parseOutSpecialCharacters(password);
             return _repo.loginUser(newName, newPass);
+        }
+
+        public User CreateUser(User User)
+        {
+            return _repo.createUser(User);
+        }
+
+        public User DeleteUser(User User)
+        {
+            return _repo.deleteUser(User);
+        }
+
+        public List<User> ReadAllUsers()
+        {
+            return _repo.ReadAll().ToList();
+        }
+
+        public User ReadUserById(int ID)
+        {
+            return _repo.getSingleUser(ID);
+        }
+
+        public User UpdateUser(User User)
+        {
+            return _repo.updateUser(User);
         }
 
         private string parseOutSpecialCharacters(string str)

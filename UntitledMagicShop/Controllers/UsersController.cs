@@ -15,7 +15,7 @@ namespace UntitledMagicShop.Controllers
     {
         private readonly IUserService _userService; 
 
-     /*   private bool IsValid(User user,out String msg)
+        private bool IsValid(User user,out String msg)
         {
             msg = "";
             if (user == null)
@@ -25,24 +25,24 @@ namespace UntitledMagicShop.Controllers
             if (user.Password.Length == 0)
                 msg = "User password can not be empty";
             return msg.Length == 0;
-        }*/
+        }
 
         public UsersController(IUserService service)
         {
             _userService = service;
         }
         // GET api/values
-       /* [HttpGet]
+        [HttpGet]
         public ActionResult<IEnumerable<User>> Get()
         {
-            return _userService.ReadAll();
+            return _userService.ReadAllUsers();
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
         public ActionResult<User> Get(int id)
         {
-            var user = _userService.ReadById(id);
+            var user = _userService.ReadUserById(id);
             if (user == null)
                 return NotFound();
             else
@@ -60,7 +60,7 @@ namespace UntitledMagicShop.Controllers
             }
             try
             {
-                var newUser = _userService.Create(user);
+                var newUser = _userService.CreateUser(user);
                 if (newUser != null)
                     return Ok(newUser);
                 else
@@ -85,7 +85,7 @@ namespace UntitledMagicShop.Controllers
 
             try
             {
-                var updatedUser = _userService.Update(user);
+                var updatedUser = _userService.UpdateUser(user);
                 if (updatedUser != null)
                     return Ok(updatedUser);
                 else
@@ -102,18 +102,18 @@ namespace UntitledMagicShop.Controllers
         [HttpDelete("{id}")]
         public ActionResult<User> Delete(int id)
         {
-            var user = _userService.ReadById(id);
+            var user = _userService.ReadUserById(id);
             if (user == null)
                 return NotFound();
 
             try
             {
-                _userService.Delete(user);
+                _userService.DeleteUser(user);
                 return Ok(user);
             }catch(Exception ex)
             {
                 return BadRequest("Error deleting user");
             }
-        }*/
+        }
     }
 }
