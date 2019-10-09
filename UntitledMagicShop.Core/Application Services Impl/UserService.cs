@@ -16,9 +16,9 @@ namespace UntitledMagicShop.Core.Application_Services_Impl
         }
         public User authenticateUser(string name, string password)
         {
-            var newName = parseOutSpecialCharacters(name);
-            var newPass = parseOutSpecialCharacters(password);
-            return _repo.loginUser(newName, newPass);
+            //var newName = parseOutSpecialCharacters(name);
+            //var newPass = parseOutSpecialCharacters(password);
+            return _repo.loginUser(name, password);
         }
 
         public User CreateUser(User User)

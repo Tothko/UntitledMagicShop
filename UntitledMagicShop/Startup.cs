@@ -38,7 +38,7 @@ namespace UntitledMagicShop
             {
                 services.AddDbContext<UntitledMagicShopAppContext>(opt =>
                 {
-                    opt.UseSqlite("Data Source=worldOfOzWebshop.db");
+                    opt.UseSqlite("Data Source=MagicShopeLocal.db");
                 });
             }
             else
@@ -91,9 +91,9 @@ namespace UntitledMagicShop
                 using (var scope = app.ApplicationServices.CreateScope())
                 {
                     var ctx = scope.ServiceProvider.GetService<UntitledMagicShopAppContext>();
-                    ctx.Database.EnsureCreated();
                     
-
+                    ctx.Database.EnsureCreated();
+                    DBInitializer.SeedDB(ctx);
                 }
             }
 

@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using UntitledMagicShop.Core.Domain_Services;
 using UntitledMagicShop.Core.Entities;
@@ -57,7 +58,8 @@ namespace UntitledMagicShop.Infrastructure.SQLData.Repos
 
         public User loginUser(string newName, string newPass)
         {
-            throw new NotImplementedException();
+            User myUser = context.Users.FirstOrDefault(user => user.Email == newName && user.Password == newPass);
+            return myUser;
         }
 
         public List<Purchase> GetPurchasesOfUser(User User)

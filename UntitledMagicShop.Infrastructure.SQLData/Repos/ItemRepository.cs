@@ -46,7 +46,7 @@ namespace UntitledMagicShop.Infrastructure.SQLData.Repos
             List<Item> ItemsByType = new List<Item>();
             foreach (var item in context.Items)
             {
-                if (item.Type == Type) ItemsByType.Add(item);
+                if (item.Type.ToLower() == Type.ToLower()) ItemsByType.Add(item);
 
             }
             return ItemsByType;
@@ -54,6 +54,8 @@ namespace UntitledMagicShop.Infrastructure.SQLData.Repos
 
         public IEnumerable<Item> getFiltered(Filter filter)
         {
+
+           
             List<Item> paging = new List<Item>();
             if (filter != null && filter.CurrentPage > 0 && filter.ItemPrPage > 1)
             {
@@ -63,11 +65,16 @@ namespace UntitledMagicShop.Infrastructure.SQLData.Repos
             }
 
 
-            if (filter != null && filter.CurrentPage > 0 && filter.ItemPrPage > 1 && FieldToSort(null, filter) != null && filter.SortOrder == "desc")
+
+            if (filter.SelectType != null )
+            {
+                return getAllItemsByType(filter.SelectType);
+            }
+            else if (filter != null && filter.CurrentPage > 0 && filter.ItemPrPage > 1 && filter.SortBy != null && filter.SortOrder == "desc")
             {
                 return paging.OrderByDescending(i => FieldToSort(i, filter));
             }
-            else if (filter != null && filter.CurrentPage > 0 && filter.ItemPrPage > 1 && FieldToSort(null, filter) != null)
+            else if (filter != null && filter.CurrentPage > 0 && filter.ItemPrPage > 1 && filter.SortBy != null)
             {
                 return paging.OrderBy(i => FieldToSort(i, filter));
             }
@@ -88,16 +95,10 @@ namespace UntitledMagicShop.Infrastructure.SQLData.Repos
 
             if (filter.SortBy.ToLower().Equals("id"))
                 return p.ID;
-            //       else if (filter.SortBy.ToLower().Equals("name"))
-            //           return p.Name;
-            //       else if (filter.SortBy.ToLower().Equals("type"))
-            //           return p.Type;
-            //       else if (filter.SortBy.ToLower().Equals("birthdate"))
-            //           return p.Birthdate;
-            //       else if (filter.SortBy.ToLower().Equals("solddate"))
-            //           return p.SoldDate;
-            //        else if (filter.SortBy.ToLower().Equals("color"))
-            //            return p.Color;
+            else if (filter.SortBy.ToLower().Equals("name"))
+                return p.Name;
+            else if (filter.SortBy.ToLower().Equals("type"))
+                return p.Type;
             else if (filter.SortBy.ToLower().Equals("price"))
                 return p.Price;
             else return null;

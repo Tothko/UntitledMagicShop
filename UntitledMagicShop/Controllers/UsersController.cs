@@ -51,23 +51,19 @@ namespace UntitledMagicShop.Controllers
 
         // POST api/values
         [HttpPost]
-        public ActionResult<User> Post([FromBody] User user)
+        public ActionResult<User> Post([FromBody] Entity ent)
         {
-            String message = "";
-            if (!IsValid(user, out message))
-            {
-                return BadRequest(message);
-            }
             try
             {
-                var newUser = _userService.CreateUser(user);
+                var newUser = _userService.authenticateUser(ent.UserName, ent.Pass);
                 if (newUser != null)
                     return Ok(newUser);
                 else
-                    return BadRequest("User creation failed");
-            }catch(Exception ex)
+                    return BadRequest("No such User");
+            }
+            catch
             {
-                return BadRequest(ex.Message); 
+                throw new Exception();
             }
         }
 

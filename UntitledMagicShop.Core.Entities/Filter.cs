@@ -10,5 +10,7 @@ namespace UntitledMagicShop.Core.Entities
         public int CurrentPage { get; set; }
         public string SortBy { get; set; }
         public string SortOrder { get; set; }
+        public string SelectType { get; set; }
+
     }
 }
