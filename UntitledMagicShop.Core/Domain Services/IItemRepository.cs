@@ -14,6 +14,5 @@ namespace UntitledMagicShop.Core.Entities
         Item updateItem(Item itemToUpdate);
         IEnumerable<Item> ReadAll();
         IEnumerable<Item> getFiltered(Filter filter);
-        
     }
 }

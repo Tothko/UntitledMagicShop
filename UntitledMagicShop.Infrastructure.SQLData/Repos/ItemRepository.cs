@@ -33,8 +33,12 @@ namespace UntitledMagicShop.Infrastructure.SQLData.Repos
 
         public List<Item> getAllItems()
         {
-          
-            return context.Items.Include(i => i.Images).ToList();
+            List<Item> Items = new List<Item>();
+            foreach (var item in context.Items)
+            {
+                Items.Add(item);
+            }
+            return Items;
         }
 
         public List<Item> getAllItemsByType(string Type)
@@ -102,7 +106,7 @@ namespace UntitledMagicShop.Infrastructure.SQLData.Repos
 
         public Item getSingleItem(int Id)
         {
-            return context.Items.Include(i => i.Images).Where(i => i.ID == Id).ToList().ElementAt(0);
+            return context.Items.Find(Id);
         }
 
         

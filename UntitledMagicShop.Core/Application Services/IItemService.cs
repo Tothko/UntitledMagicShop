@@ -20,6 +20,5 @@ namespace UntitledMagicShop.Core.Application_Services
 
         IEnumerable<Item> ReadAll();
         IEnumerable<Item> GetFilteredItems(Filter filter);
-        
     }
 }

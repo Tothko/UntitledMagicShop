@@ -92,7 +92,7 @@ namespace UntitledMagicShop
                 {
                     var ctx = scope.ServiceProvider.GetService<UntitledMagicShopAppContext>();
                     
-                   // ctx.Database.EnsureCreated();
+                    ctx.Database.EnsureCreated();
                     DBInitializer.SeedDB(ctx);
                 }
             }

@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Text;
 using UntitledMagicShop.Core.Domain_Services;
 using UntitledMagicShop.Core.Entities;
-using System.Linq;
 
 namespace UntitledMagicShop.Infrastructure.SQLData.Repos
 {
@@ -34,7 +33,7 @@ namespace UntitledMagicShop.Infrastructure.SQLData.Repos
 
         public Purchase getSinglePurchase(int Id)
         {
-            return context.Purchases.Include(p => p.User).Include(p => p.Items).Where(p =>p.ID == Id).ToList().ElementAt(0);
+            return context.Purchases.Find(Id);
         }
 
         public Purchase updatePurchase(Purchase PurchaseToUpdate)
@@ -56,9 +55,12 @@ namespace UntitledMagicShop.Infrastructure.SQLData.Repos
 
         public List<Purchase> readAllPurchases()
         {
-
-            return context.Purchases.Include(p => p.User).Include(p => p.Items).ToList();
-
+            List<Purchase> Purchases = new List<Purchase>();
+            foreach (var purchase in context.Purchases)
+            {
+                Purchases.Add(purchase);
+            }
+            return Purchases;
         }
     }
 }
