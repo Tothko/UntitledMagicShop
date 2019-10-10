@@ -36,13 +36,13 @@ namespace UntitledMagicShop.Infrastructure.SQLData.Repos
 
         public User getSingleUser(int Id)
         {
-            return context.Users.Find(Id);
+            return context.Users.Include(u => u.Purchases).Where(u => u.ID == Id).ToList().ElementAt(0);
         }
 
 
         public IEnumerable<User> ReadAll()
         {
-            return context.Users;
+            return context.Users.Include(u => u.Purchases);
         }
 
         public User updateUser(User UserToUpdate)
