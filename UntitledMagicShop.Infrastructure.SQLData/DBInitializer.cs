@@ -18,14 +18,17 @@ namespace UntitledMagicShop.Infrastructure.SQLData
                 return;   // DB has been seeded
             }
             SeedUsers(ctx);
+            ctx.SaveChanges();
             SeedItems(ctx);
+            ctx.SaveChanges();
+            SeedPurchases(ctx);
             ctx.SaveChanges();
         }
 
         private static void SeedUsers(UntitledMagicShopAppContext ctx)
         {
-            for (int i = 1; i <= 10; i++)
-            {
+            //for (int i = 1; i <= 10; i++)
+            //{
                 ctx.Users.Add(new User {
                     //ID = i,
                     FirstName = "Marek",
@@ -36,7 +39,40 @@ namespace UntitledMagicShop.Infrastructure.SQLData
                     Address = "Strandbygade 72, 6700 Esbjerg",
                 }) ;
 
-            }
+            ctx.Users.Add(new User
+            {
+                //ID = i,
+                FirstName = "Nedas",
+                LastName = "Stancik",
+                Email = "yolodude69@fmail.com",
+                Password = "drowssap",
+                Phone = "+45120103042",
+                Address = "Strandbygade 54, 6700 Esbjerg",
+            });
+
+            ctx.Users.Add(new User
+            {
+                //ID = i,
+                FirstName = "Christina Jancy",
+                LastName = "Pedersen",
+                Email = "cutegirl@fmail.com",
+                Password = "password",
+                Phone = "+4510203042",
+                Address = "Fanostreet 11, 6700 Nordby",
+            });
+
+            ctx.Users.Add(new User
+            {
+                //ID = i,
+                FirstName = "Olivia",
+                LastName = "Owczarczyk",
+                Email = "nicegirl@fmail.com",
+                Password = "heslo",
+                Phone = "+4510903042",
+                Address = "Piast street 11, 4567 SomePolishCity",
+            });
+
+            //}
         }
 
         private static void SeedItems(UntitledMagicShopAppContext ctx)
@@ -85,7 +121,7 @@ namespace UntitledMagicShop.Infrastructure.SQLData
             });
             ctx.Items.Add(new Item
             {
-                Name = "Healt potion",
+                Name = "Health potion",
                 Price = 20.00,
                 OnStock = 888888,
                 Type = "Potion",
@@ -119,10 +155,76 @@ namespace UntitledMagicShop.Infrastructure.SQLData
 
         private static void SeedPurchases(UntitledMagicShopAppContext ctx)
         {
-            for (int i = 1; i <= 5; i++)
+            double somePrice = 0;
+            List<Item> someList = new List<Item>();
+            
+
+            
+            Purchase purchase0 = new Purchase
             {
-               
+
+                User = ctx.Users.SingleOrDefault(u => u.ID == 1),
+                Items = someList,
+                TotalPrice = somePrice
+
+
+
+            };
+            ctx.Purchases.Add(purchase0);
+            ctx.Users.SingleOrDefault(u => u.ID == 1).Purchases.Add(purchase0);
+
+            someList.Add(ctx.Items.SingleOrDefault(u => u.ID == 1));
+            foreach (var item in someList)
+            {
+                somePrice += item.Price;
             }
+            Purchase purchase1 = new Purchase
+            {
+
+                User = ctx.Users.SingleOrDefault(u => u.ID == 1),
+                Items = someList,
+                TotalPrice = somePrice
+
+
+
+            };
+            ctx.Purchases.Add(purchase1);
+            ctx.Users.SingleOrDefault(u => u.ID == 1).Purchases.Add(purchase1);
+
+
+
+
+            someList.Add(ctx.Items.SingleOrDefault(u => u.ID == 2));
+            someList.Add(ctx.Items.SingleOrDefault(u => u.ID == 3));
+            foreach (var item in someList)
+            {
+                somePrice += item.Price;
+            }
+            Purchase purchase2 = new Purchase
+            {
+
+                User = ctx.Users.SingleOrDefault(u => u.ID == 1),
+                Items = someList,
+                TotalPrice = somePrice
+
+
+
+            };
+            ctx.Purchases.Add(purchase2);
+            ctx.Users.SingleOrDefault(u => u.ID == 1).Purchases.Add(purchase2);
+
+
+
+
+
+
+
+
+
+            //for (int i = 1; i <= 5; i++)
+            //{
+
+            //}
 
         }
     }

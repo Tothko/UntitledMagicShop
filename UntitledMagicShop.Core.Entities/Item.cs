@@ -12,5 +12,7 @@ namespace UntitledMagicShop.Core.Entities
         public int OnStock { get; set; }
         public string Type { get; set; }
         public string Description { get; set; }
+
+        public List<ItemImages> Images { get; set; }
     }
 }

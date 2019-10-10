@@ -21,10 +21,18 @@ namespace UntitledMagicShop.Infrastructure.SQLData
              .WithMany(u => u.Purchases)
              .OnDelete(DeleteBehavior.SetNull);
 
-            modelBuilder.Entity<User>()
-                .HasMany(u => u.Purchases)
-                .WithOne(p => p.User)
-                .OnDelete(DeleteBehavior.SetNull);
+            modelBuilder.Entity<Item>()
+             .HasMany(i => i.Images)
+             .WithOne(il => il.Item)
+             .OnDelete(DeleteBehavior.SetNull);
+
+             modelBuilder.Entity<User>()
+                 .HasMany(u => u.Purchases)
+                 .WithOne(p => p.User)
+                 .OnDelete(DeleteBehavior.SetNull);
+
+            modelBuilder.Entity<ItemImages>()
+         .HasKey(Ii => new { Ii.ItemID, Ii.ImageID });
 
         }
     }
