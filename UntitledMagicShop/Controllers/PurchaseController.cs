@@ -19,6 +19,14 @@ namespace UntitledMagicShop.Controllers
         {
             _purchaseService = purchaseService;
         }
+        // GET api/values?
+        [HttpGet]
+        public ActionResult<IEnumerable<Purchase>> Get()
+        {
+
+                return _purchaseService.ReadAllPurchases();
+            
+        }
         // POST api/values
         [HttpPost]
         public ActionResult<Purchase> Post([FromBody] Purchase sale)
@@ -31,7 +39,7 @@ namespace UntitledMagicShop.Controllers
                 if (newPurchase != null)
                     return Ok(newPurchase);
                 else
-                    return BadRequest("Item creation failed");
+                    return BadRequest("Purchase creation failed");
             }
             catch (Exception ex)
             {

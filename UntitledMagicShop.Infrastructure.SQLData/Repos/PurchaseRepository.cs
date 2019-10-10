@@ -36,11 +36,6 @@ namespace UntitledMagicShop.Infrastructure.SQLData.Repos
             return context.Purchases.Find(Id);
         }
 
-        public IEnumerable<Purchase> ReadAll()
-        {
-            return context.Purchases;
-        }
-
         public Purchase updatePurchase(Purchase PurchaseToUpdate)
         {
             if (context.Items.Find(PurchaseToUpdate) == null)
@@ -58,5 +53,14 @@ namespace UntitledMagicShop.Infrastructure.SQLData.Repos
             return User;
         }
 
+        public List<Purchase> readAllPurchases()
+        {
+            List<Purchase> Purchases = new List<Purchase>();
+            foreach (var purchase in context.Purchases)
+            {
+                Purchases.Add(purchase);
+            }
+            return Purchases;
+        }
     }
 }

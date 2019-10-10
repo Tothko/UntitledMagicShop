@@ -29,11 +29,12 @@ namespace UntitledMagicShop.Core.Application_Services_Impl
         private bool validateItem(Item newItem)
         {
             //return Regex.Replace(newItem.name(), "[^a-zA-Z0-9_.]+", "", RegexOptions.Compiled);
-            throw new NotImplementedException();
+            // throw new NotImplementedException();
+            return true;
 
         }
 
-        public Item deleteItem(Item itemToDelete)
+        public Item deleteItem(int itemToDelete)
         {
             return _repo.deleteItem(itemToDelete);
         }

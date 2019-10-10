@@ -23,12 +23,12 @@ namespace UntitledMagicShop.Infrastructure.SQLData.Repos
             return newItem;
         }
 
-        public Item deleteItem(Item itemToDelete)
+        public Item deleteItem(int ID)
         {
-            
-            context.Remove(context.Find<Item>(itemToDelete));
+            var itemToRemove = context.Items.SingleOrDefault(x => x.ID == ID);
+            context.Remove(itemToRemove);
             context.SaveChanges();
-            return itemToDelete;
+            return itemToRemove;
         }
 
         public List<Item> getAllItems()
@@ -118,13 +118,14 @@ namespace UntitledMagicShop.Infrastructure.SQLData.Repos
 
         public Item updateItem(Item itemToUpdate)
         {
-            if (context.Items.Find(itemToUpdate) == null)
+            var entity = context.Items.Find(itemToUpdate.ID);
+            if (entity != null)
             {
-                return null;
+                context.Entry(entity).CurrentValues.SetValues(itemToUpdate);
+                context.SaveChanges();
+                return itemToUpdate;
             }
-            context.Entry(itemToUpdate).CurrentValues.SetValues(itemToUpdate);
-
-            return itemToUpdate;
+            return null;
         }
     }
 }

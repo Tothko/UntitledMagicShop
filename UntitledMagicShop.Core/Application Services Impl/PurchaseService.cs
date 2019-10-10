@@ -18,5 +18,10 @@ namespace UntitledMagicShop.Core.Application_Services_Impl
         {
             return _repo.createPurchase(newPurchase);
         }
+
+        public List<Purchase> ReadAllPurchases()
+        {
+            return _repo.readAllPurchases();
+        }
     }
 }

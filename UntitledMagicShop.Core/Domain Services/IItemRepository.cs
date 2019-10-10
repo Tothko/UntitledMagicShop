@@ -7,7 +7,7 @@ namespace UntitledMagicShop.Core.Entities
     public interface IItemRepository
     {
         Item createItem(Item newItem);
-        Item deleteItem(Item itemToDelete);
+        Item deleteItem(int ID);
         List<Item> getAllItemsByType(string type);
         List<Item> getAllItems();
         Item getSingleItem(int iD);

@@ -8,5 +8,6 @@ namespace UntitledMagicShop.Core.Application_Services
     public interface IPurchaseService
     {
         Purchase createPurchase(Purchase newPurchase);
+        List<Purchase> ReadAllPurchases();
     }
 }

@@ -85,10 +85,7 @@ namespace UntitledMagicShop.Controllers
         public ActionResult<Item> Put(int id, [FromBody] Item item)
         {
             String message = "";
-            if (!IsValid(item, out message))
-            {
-                return BadRequest(message);
-            }
+
             if (id != item.ID)
                 return BadRequest("Item id does not match");
 
@@ -111,14 +108,10 @@ namespace UntitledMagicShop.Controllers
         [HttpDelete("{id}")]
         public ActionResult<Item> Delete(int id)
         {
-            var item = _itemService.listSingleItem(id);
-            if (item == null)
-                return NotFound();
-
             try
             {
-                _itemService.deleteItem(item);
-                return Ok(item);
+               Item deletedItem = _itemService.deleteItem(id);
+                return Ok(deletedItem);
             }
             catch (Exception ex)
             {

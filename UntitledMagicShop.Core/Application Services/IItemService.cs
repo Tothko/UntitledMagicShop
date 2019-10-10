@@ -16,7 +16,7 @@ namespace UntitledMagicShop.Core.Application_Services
 
         Item updateItem(Item itemToUpdate);
 
-        Item deleteItem(Item itemToDelete);
+        Item deleteItem(int ID);
 
         IEnumerable<Item> ReadAll();
         IEnumerable<Item> GetFilteredItems(Filter filter);
